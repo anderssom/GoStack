@@ -10,10 +10,14 @@ interface Request {
     email: string;
     password: string;
 }
+interface Response {
+    user: User;
+    token: string;
+}
 
 class AuthenticateUserService {
 
-    public async execute ({ email, password}: Request): Promise<{user: User, token: string }>{
+    public async execute ({ email, password}: Request): Promise<Response>{
         const usersRepository = getRepository(User);
 
         const user = await usersRepository.findOne( { where: { email}} );
