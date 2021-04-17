@@ -9,15 +9,20 @@ import User from '../models/User';
 interface Request {
     email: string;
     password: string;
-}
-interface Response {
-    user: User;
-    token: string;
-}
+};
+
+interface tok {
+    token: String
+
+};
 
 class AuthenticateUserService {
 
-    public async execute ({ email, password}: Request): Promise<Response>{
+    public async execute ({ email, password}: Request): Promise<{
+        user: User,
+        token: String,
+        }>{
+
         const usersRepository = getRepository(User);
 
         const user = await usersRepository.findOne( { where: { email}} );
@@ -38,6 +43,7 @@ class AuthenticateUserService {
         subject: user.id,
         expiresIn,
     });
+
 
 
     return{
