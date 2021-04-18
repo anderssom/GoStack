@@ -24,10 +24,8 @@ sessionsRouter.post('/', async (request, response) =>{
             updated_at: user.updated_at,
             
         };
-
-       console.log(request, response);
-    
-                    return response.json(userWithoutPassword);
+        
+        return response.json({userWithoutPassword,token});
         }catch(err){
             return response.status(400).json({ error: err.message });
             }

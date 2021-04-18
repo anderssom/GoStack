@@ -11,11 +11,6 @@ interface Request {
     password: string;
 };
 
-interface tok {
-    token: String
-
-};
-
 class AuthenticateUserService {
 
     public async execute ({ email, password}: Request): Promise<{
@@ -39,12 +34,12 @@ class AuthenticateUserService {
 
     const { secret, expiresIn } = authConfig.jwt;
 
-    const token = sign({}, secret,{
+    const token = sign({}, secret, {
+        
         subject: user.id,
         expiresIn,
+
     });
-
-
 
     return{
         user,
