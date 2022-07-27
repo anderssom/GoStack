@@ -11,6 +11,8 @@ interface Request {
     password: string;
 };
 
+//interface Response {}
+
 class AuthenticateUserService {
 
     public async execute ({ email, password}: Request): Promise<{
